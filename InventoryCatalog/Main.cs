@@ -102,7 +102,7 @@ namespace InventoryCatalog
         {
             DataBuddy.PutInUse(ID, toolId, SizesBox.SelectedItem.ToString());
             GetCheckedOut();
-            DataBuddy.CheckIn()
+            //DataBuddy.CheckOut(ID, ID, toolId, SizesBox.SelectedItem.ToString());
             Submit_btn.Enabled = false;
         }
 
@@ -124,8 +124,15 @@ namespace InventoryCatalog
         private void UncheckSubBtn_Click(object sender, EventArgs e)
         {
             DataBuddy.TakeOutInUse(CheckOutID);
+            DataBuddy.CheckIn(CheckOutID);
             DisplayInUse();
             UncheckSubBtn.Enabled = false;
+        }
+
+        private void HistoryBtn_Click(object sender, EventArgs e)
+        {
+            History newL = new History();
+            newL.ShowDialog();
         }
     }
 }

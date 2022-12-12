@@ -4,7 +4,6 @@ C:\Users\barnoac\source\repos\InventoryCatalog\InventoryCatalog\bin\Debug\Invent
 C:\Users\barnoac\source\repos\InventoryCatalog\InventoryCatalog\bin\Debug\MetroFramework.Design.dll
 C:\Users\barnoac\source\repos\InventoryCatalog\InventoryCatalog\bin\Debug\MetroFramework.dll
 C:\Users\barnoac\source\repos\InventoryCatalog\InventoryCatalog\bin\Debug\MetroFramework.Fonts.dll
-C:\Users\barnoac\source\repos\InventoryCatalog\InventoryCatalog\obj\Debug\InventoryCatalog.csproj.AssemblyReference.cache
 C:\Users\barnoac\source\repos\InventoryCatalog\InventoryCatalog\obj\Debug\InventoryCatalog.Confirm.resources
 C:\Users\barnoac\source\repos\InventoryCatalog\InventoryCatalog\obj\Debug\InventoryCatalog.Login.resources
 C:\Users\barnoac\source\repos\InventoryCatalog\InventoryCatalog\obj\Debug\InventoryCatalog.Main.resources
@@ -16,3 +15,5 @@ C:\Users\barnoac\source\repos\InventoryCatalog\InventoryCatalog\obj\Debug\Invent
 C:\Users\barnoac\source\repos\InventoryCatalog\InventoryCatalog\obj\Debug\InventoryCatalog.csproj.CopyComplete
 C:\Users\barnoac\source\repos\InventoryCatalog\InventoryCatalog\obj\Debug\InventoryCatalog.exe
 C:\Users\barnoac\source\repos\InventoryCatalog\InventoryCatalog\obj\Debug\InventoryCatalog.pdb
+C:\Users\barnoac\source\repos\InventoryCatalog\InventoryCatalog\obj\Debug\InventoryCatalog.csproj.AssemblyReference.cache
+C:\Users\barnoac\source\repos\InventoryCatalog\InventoryCatalog\obj\Debug\InventoryCatalog.History.resources

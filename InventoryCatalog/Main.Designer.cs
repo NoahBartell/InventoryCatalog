@@ -58,6 +58,7 @@ namespace InventoryCatalog
             this.toolTblTableAdapter1 = new InventoryCatalog.ToolCribDataSet4TableAdapters.toolTblTableAdapter();
             this.Submit_btn = new MetroFramework.Controls.MetroButton();
             this.UncheckSubBtn = new MetroFramework.Controls.MetroButton();
+            this.HistoryBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.toolCribDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toolCribDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tool_Grid)).BeginInit();
@@ -82,7 +83,7 @@ namespace InventoryCatalog
             // ToolMgr
             // 
             this.ToolMgr.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ToolMgr.Location = new System.Drawing.Point(699, 47);
+            this.ToolMgr.Location = new System.Drawing.Point(706, 47);
             this.ToolMgr.Name = "ToolMgr";
             this.ToolMgr.Size = new System.Drawing.Size(202, 52);
             this.ToolMgr.TabIndex = 1;
@@ -231,7 +232,7 @@ namespace InventoryCatalog
             // Logout
             // 
             this.Logout.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Logout.Location = new System.Drawing.Point(235, 47);
+            this.Logout.Location = new System.Drawing.Point(240, 47);
             this.Logout.Name = "Logout";
             this.Logout.Size = new System.Drawing.Size(202, 52);
             this.Logout.TabIndex = 5;
@@ -335,11 +336,23 @@ namespace InventoryCatalog
             this.UncheckSubBtn.UseSelectable = true;
             this.UncheckSubBtn.Click += new System.EventHandler(this.UncheckSubBtn_Click);
             // 
+            // HistoryBtn
+            // 
+            this.HistoryBtn.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HistoryBtn.Location = new System.Drawing.Point(476, 47);
+            this.HistoryBtn.Name = "HistoryBtn";
+            this.HistoryBtn.Size = new System.Drawing.Size(202, 52);
+            this.HistoryBtn.TabIndex = 11;
+            this.HistoryBtn.Text = "History";
+            this.HistoryBtn.UseVisualStyleBackColor = true;
+            this.HistoryBtn.Click += new System.EventHandler(this.HistoryBtn_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1200, 800);
+            this.Controls.Add(this.HistoryBtn);
             this.Controls.Add(this.UncheckSubBtn);
             this.Controls.Add(this.Submit_btn);
             this.Controls.Add(this.SizesBox);
@@ -395,5 +408,6 @@ namespace InventoryCatalog
         private ToolCribDataSet4TableAdapters.toolTblTableAdapter toolTblTableAdapter1;
         private MetroFramework.Controls.MetroButton Submit_btn;
         private MetroFramework.Controls.MetroButton UncheckSubBtn;
+        private System.Windows.Forms.Button HistoryBtn;
     }
 }

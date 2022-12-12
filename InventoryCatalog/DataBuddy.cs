@@ -306,14 +306,36 @@ namespace InventoryCatalog
 
         //HISTORY
 
-        public static void CheckIn(int ID, int UserID, int ToolID, string ToolSize)
+        public static void CheckIn(int ID)
         {
             con.Open();
             SqlCommand cmd = con.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = $"INSERT INTO History (Id, user, tool, toolSize, CheckOout) VALUES ('{ID}', '{UserId}', '{ToolSize}', '{DateTime.Now}')";
+            cmd.CommandText = $"UPDATE HistoryTbl SET CheckedIn='{DateTime.Now}' WHERE Id={ID}";
             cmd.ExecuteNonQuery();
             con.Close();
+        }
+
+        public static DataTable GetHistory(String search)
+        {
+            con.Open();
+            SqlCommand cmd = con.CreateCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = $"Select a.Id AS 'ID', b.fName AS 'First Name', b.lName AS 'Last Name', " +
+                $"c.name AS 'Tool Name', ToolSize AS 'Tool Size', a.CheckedOut AS 'Checked Out', " +
+                $"a.CheckedIn AS 'Checked In' FROM[HistoryTbl] a " +
+                $"LEFT JOIN[accountTbl] b ON a.[user] = b.id " +
+                $"LEFT JOIN[toolTbl] c ON c.id = a.tool " +
+                $"WHERE a.Id LIKE '%{search}%' OR " +
+                $"b.fName LIKE '%{search}%' OR " +
+                $"b.lName LIKE '%{search}%' OR " +
+                $"c.name LIKE '%{search}%'";
+            cmd.ExecuteNonQuery();
+            DataTable dta = new DataTable();
+            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+            sda.Fill(dta);
+            con.Close();
+            return dta;
         }
     }
 }
