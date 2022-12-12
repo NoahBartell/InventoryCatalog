@@ -25,17 +25,18 @@ namespace InventoryCatalog
             {
                 UserMgmBtn.Show();
                 ToolMgr.Show();
+                HistoryBtn.Show();
             }
             else
             {
                 UserMgmBtn.Hide();
                 ToolMgr.Hide();
+                HistoryBtn.Show();
             }
             display();
             DisplayInUse();
             Submit_btn.Enabled = false;
             GetCheckedOut();
-            //setComboBox();
         }
 
         private void ToolMgr_Click(object sender, EventArgs e)
@@ -46,15 +47,11 @@ namespace InventoryCatalog
 
         public void display()
         {
-            Tool_Grid.DataSource = DataBuddy.displayTool();
+            Tool_Grid.DataSource = DataBuddy.displayToolMain();
         }
 
         private void Main_Load(object sender, EventArgs e)
         {
-        //    // TODO: This line of code loads data into the 'toolCribDataSet4.toolTbl' table. You can move, or remove it, as needed.
-        //    this.toolTblTableAdapter1.Fill(this.toolCribDataSet4.toolTbl);
-        //    // TODO: This line of code loads data into the 'toolCribDataSet2.toolTbl' table. You can move, or remove it, as needed.
-        //    this.toolTblTableAdapter.Fill(this.toolCribDataSet2.toolTbl);
 
         }
 

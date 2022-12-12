@@ -17,7 +17,7 @@ namespace InventoryCatalog
     {
         static SqlConnection con = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ToolCrib;Integrated Security=True");
         /////// Start User Management
-        public static int logincheck(string user, string pass)
+        public static int logincheck(string user, string pass) //Gets The user ID
         {
             con.Open();
             SqlCommand sqcmd = new SqlCommand($"Select * from accountTbl where email='{user}' and password='{pass}'", con);
@@ -38,7 +38,7 @@ namespace InventoryCatalog
         }
 
         //Get Name
-        public static string GetName(int id)
+        public static string GetName(int id) //Get Name from Id
         {
             con.Open();
             SqlCommand cmd = con.CreateCommand();
@@ -54,7 +54,7 @@ namespace InventoryCatalog
             return $"{FN} {LN}";
         }
 
-        public static bool IsAdmin(int id)
+        public static bool IsAdmin(int id) //Checks if the user is an Admin
         {
             con.Open();
             SqlCommand cmd = con.CreateCommand();
@@ -74,17 +74,7 @@ namespace InventoryCatalog
         {
             con.Open();
            
-            if (id != 0)
-            {
-                //if an id greater than zero is sent (meaning a current record is wanting to be updated) update info
-                SqlCommand cmd = con.CreateCommand();
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = $"update [accountTbl] set fName='{fName}', lName='{lName}', password='{pass}', email='{email}', admin='{isAdmin}' where id='{id}'";
-                cmd.ExecuteNonQuery();
-                con.Close();
-                return false;
-            }
-            else
+            if(id == 0)
             {
                 //if id = 0 (record isn't selected) insert a new record into table
                 SqlCommand cmd = con.CreateCommand();
@@ -93,6 +83,16 @@ namespace InventoryCatalog
                 cmd.ExecuteNonQuery();
                 con.Close();
                 return true;
+            }
+            else
+            {
+                //else an id greater than zero is sent (meaning a current record is wanting to be updated) update info
+                SqlCommand cmd = con.CreateCommand();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = $"update [accountTbl] set fName='{fName}', lName='{lName}', password='{pass}', email='{email}', admin='{isAdmin}' where id='{id}'";
+                cmd.ExecuteNonQuery();
+                con.Close();
+                return false;
             }
         }
         //Display Student accounts
@@ -107,7 +107,6 @@ namespace InventoryCatalog
             SqlDataAdapter sda = new SqlDataAdapter(cmd);
             sda.Fill(dta);
             con.Close();
-            //returns data table
             return dta;
         }
 
@@ -138,21 +137,25 @@ namespace InventoryCatalog
             con.Close();
             return dta;
         }
+        public static DataTable displayToolMain()
+        {
+            con.Open();
+            SqlCommand cmd = con.CreateCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "Select id, name AS 'Name' from [toolTbl]";
+            cmd.ExecuteNonQuery();
+            DataTable dta = new DataTable();
+            SqlDataAdapter sda = new SqlDataAdapter(cmd);
+            sda.Fill(dta);
+            con.Close();
+            return dta;
+        }
         //either inserts or updates a record
         public static bool submitBtn(int id, string name, int categoryId, int programId)
         {
             con.Open();
 
-            if (id != 0)
-            {
-                SqlCommand cmd = con.CreateCommand();
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = $"update [toolTbl] set name='{name}', categoryId='{categoryId}', programId='{programId}' where id='{id}'";
-                cmd.ExecuteNonQuery();
-                con.Close();
-                return false;
-            }
-            else
+            if (id == 0)
             {
                 SqlCommand cmd = con.CreateCommand();
                 cmd.CommandType = CommandType.Text;
@@ -161,6 +164,16 @@ namespace InventoryCatalog
                 con.Close();
                 return true;
             }
+            else
+            {
+                SqlCommand cmd = con.CreateCommand();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = $"update [toolTbl] set name='{name}', categoryId='{categoryId}', programId='{programId}' where id='{id}'";
+                cmd.ExecuteNonQuery();
+                con.Close();
+                return false;
+            }
+            
         }
         //deletes selected tool
         public static void deleteTool(int id)
@@ -187,7 +200,7 @@ namespace InventoryCatalog
         /////////Start In use management
         ///
         //gets the specific list of sizes for the tool
-        public static List<Object> GetSizes(int toolId)
+        public static List<Object> GetSizes(int toolId) //gets all sizes from a id and converts to an object array
         {
             con.Open();
             SqlCommand cmd = con.CreateCommand();
@@ -219,8 +232,6 @@ namespace InventoryCatalog
         {
             var rows = dt.Rows;
             int rowCount = rows.Count;
-            //int colCount = dt.Columns.Count;
-            //var result = new Object[rowCount];
             var result = new List<Object>();
 
             for (int i = 0; i < rowCount; i++)
@@ -248,7 +259,7 @@ namespace InventoryCatalog
             }
 
         }
-        public static int GetQuantity(int id, Object size)
+        public static int GetQuantity(int id, Object size) // Currently not used. Didn't implement a way to count and show whats left
         {
             con.Open();
             SqlCommand cmd = con.CreateCommand();
